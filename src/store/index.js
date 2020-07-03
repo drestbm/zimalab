@@ -10,16 +10,17 @@ var config = {
   }
 }
 
+var cors_url = `https://cors-anywhere.herokuapp.com/`
+
 export default new Vuex.Store({
   state: {
     listOfVacancies: [],
   },
   mutations: {
     loadListOfVacancies() {
-      axios.get(`https://jobs.github.com/positions.json?page=1`,config)
+      axios.get(cors_url + `https://jobs.github.com/positions.json?page=1`,config)
         .then(response => {
           this.listOfVacancies = response.data
-          console.log(this.listOfVacancies)
         })
         .catch(error => {
           console.log(error)

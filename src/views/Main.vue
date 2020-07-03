@@ -4,26 +4,7 @@
             <Panel/>
         </div>
         <div class="main__list">
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
+            <Card v-for="item in this.$store.listOfVacancies" :key="item.id" :card="item"/>
         </div>
     </div>
 </template>
@@ -38,7 +19,7 @@ export default {
         Card,
         Panel
     },
-    mounted: function() {
+    beforeCreate: function() {
         this.$store.commit('loadListOfVacancies')
     }
 }
@@ -53,7 +34,7 @@ export default {
     margin: 90px auto
     margin-bottom: 10px
 
-    .main__panel
+    // .main__panel
         
 
     .main__list
