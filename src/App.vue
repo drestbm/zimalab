@@ -20,4 +20,5 @@ export default {
 body
   margin: 0
   font-family: Arial, Helvetica, sans-serif
+  background-color: #f0f2f5
 </style>

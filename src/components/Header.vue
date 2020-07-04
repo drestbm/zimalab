@@ -25,14 +25,20 @@ export default {
     left: 0
     height: 70px
     width: 100vw
-    background-color: #000
+    background-color: #3f51b5
 
     #nav
         display: grid
         grid-template-columns: 70px auto
-        width: 1024px
+        width: 1280px
         margin: 0 auto
         align-items: center
+
+        @media only screen and (max-width : 1024px)
+            width: calc(100% - 20px)
+
+        @media only screen and (max-width : 670px)
+            width: 100%
 
         #logo
             height: 70px
@@ -62,6 +68,6 @@ export default {
 
                 &:hover
                     cursor: pointer
-                    background-color: red
+                    background-color: #f44336
                     
 </style>

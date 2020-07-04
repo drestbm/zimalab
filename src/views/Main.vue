@@ -4,7 +4,7 @@
             <Panel/>
         </div>
         <div class="main__list">
-            <Card v-for="item in this.$store.listOfVacancies" :key="item.id" :card="item"/>
+            <Card v-for="item in vacancies" :key="item.id" :card="item"/>
         </div>
     </div>
 </template>
@@ -12,6 +12,7 @@
 <script>
 import Card from '../components/Card'
 import Panel from '../components/Panel'
+import { mapState } from 'vuex'
 
 export default {
     name: 'Main',
@@ -19,8 +20,11 @@ export default {
         Card,
         Panel
     },
-    beforeCreate: function() {
-        this.$store.commit('loadListOfVacancies')
+    computed: mapState({
+        vacancies: state => state.vacancies.listOfVacancies
+    }),
+    created: function() {
+        this.$store.dispatch('vacancies/getList')
     }
 }
 </script>
@@ -28,11 +32,17 @@ export default {
 <style scoped lang="sass">
 #main
     display: grid
-    grid-template-columns: 320px 1fr
+    grid-template-rows: minmax(40px,60px) 1fr
     grid-gap: 10px
-    width: 1024px
+    width: 1280px
     margin: 90px auto
     margin-bottom: 10px
+
+    @media only screen and (max-device-width : 1024px)
+        width: calc(100% - 20px)
+
+    @media only screen and (max-device-width : 670px)
+        width: 100%
 
     // .main__panel
         
